@@ -4,22 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-  <title>vue class</title>
+  <title>vue video</title>
 </head>
 <body>
   <main id="app">
-    <h3>{{ welcomeMessage }}</h3>
+    <h4 class="welcome-message">{{ mainmessage }}</h4>
+
     <ul>
-      <li v-for="fruit in deliciousFruit"> <!-- select the array thingy, kinda like a "for each" loop -->
-        <p v-on:click="logClicked" v-if="seen">{{ fruit.name}} is {{fruit.flavour}}</p>
+      <li v-for="movie in videodata">
+        <a :href="movie.vidsource" v-on:click="loadMovie">
+          <img :src="'images/'+ movie.thumb" :alt="movie.name" />
+        </a>
       </li>
     </ul>
-    <h2>{{ result }}</h2>
 
-    <button v-on:click="reversemess">mess it up</button>
+    <p>
+      click on a poster to preview the movie
+    </p>
 
-    <p v-if="hasVue">{{vuemessage}}</p>
+    <section>
+      <h3 class="movie-title">{{ videotitle }}</h3>
+      <p class="movie-details">{{ videodescription }}</p>
+    </section>
   </main>
   <script src="js/main.js"></script>
 </body>
