@@ -12,7 +12,9 @@ const vm = new Vue({
 
     videotitle : "title goes here",
     videodescription : "description here, yay",
-    videosource : ""
+    videosource : "",
+
+    showDetails : false
   },
 
   methods : {
@@ -26,6 +28,16 @@ const vm = new Vue({
       this.videotitle = currentData[0].name;
       this.videodescription = currentData[0].description;
       this.videosource = dataKey;
+
+      this.showDetails = true;
+
+      setTimeout(function() { window.scrollTo(0, 1200); }, 500);
+    },
+
+    scrollBackUp() {
+      window.scrollTo(0, 0);
+      this.showDetails = false;
+      this.videosource = "";
     }
   }
 });
