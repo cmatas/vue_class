@@ -1,0 +1,32 @@
+<section id="movie">
+  <a href="/" class="back-button">
+    <i class="far fa-arrow-alt-circle-left"></i>
+  </a>
+
+  <video autoplay>
+    <source src="/video/{{ trailer}}" type="video/mp4">
+      <!--alternate / fallback sources here-->
+</video>
+
+<!-- add the reviews -->
+<article class="comments" v-if="reviews.length > 0">
+  <div v-for="(review, index) in reviews">
+<!--will show starts here with a custom component-->
+    <i class="post-date">${ review.comments_date }</i>
+    <p>
+    ${ review.comments_copy }
+    </p>
+  </div>
+</article>
+
+<!--add your own review-->
+
+<aside class="add-comment">
+  <h4>add a review</h4>
+  <span class="hidden movId">{{ movie }}</span>
+  <input type="range" name="myRange" min="5" step="1" v-model="numStars">
+  <label for="myRange">${ numStars }-Star Review</label>
+  <textarea name="myReview" placeholder="what did you think?" v-model="review"></textarea>
+  <input type="submit" value="Submit your review" v-on:click="addReview">
+</aside>
+</section>
