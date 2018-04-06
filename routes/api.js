@@ -7,14 +7,15 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended : false}));
 
 /* add review to the comment table*/
-router.post('/', (req, res, next) =>{
+router.post('/', (req, res) =>{
   //db an sql query to post a review
-  connect.query(`INSERT INTO tbl_comments (comments_id, comments_auth, comments_copy, comments_date, comments_movie, comments_rating) VALUES (NULL, NULL, "${req.body.comment}", CURRENT_TIMESTAMP, "${req.body.id}", "${req.body.stars}");`, (error, rows) => {
+  console.log('post a review');
+  connect.query(`INSERT INTO tbl_comments (comments_id, comments_auth, comments_copy, comments_date, comments_movie, comments_rating) VALUES (NULL, NULL, "${req.body.comment}", CURRENT_TIMESTAMP, "${req.body.id}", "${req.body.stars}");`, (error, data) => {
     if (error) {
-      throw error;
-
+      // throw error;
+      console.log(error);
     }else {
-      res.json(rows);
+      res.json(data);
     }
   })
 });

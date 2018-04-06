@@ -22,11 +22,11 @@
 <!--add your own review-->
 
 <aside class="add-comment">
-  <h4>add a review</h4>
+  <h4 class="review-heading">Add a review</h4>
   <span class="hidden movId">{{ movie }}</span>
-  <input type="range" name="myRange" min="5" step="1" v-model="numStars">
+  <input type="range" name="myRange" id="myRange" min="0" max="5" step="1" v-model="numStars">
   <label for="myRange">${ numStars }-Star Review</label>
-  <textarea name="myReview" placeholder="what did you think?" v-model="review"></textarea>
+  <textarea name="review" id="review" placeholder="what did you think?" v-model="review"></textarea>
   <input type="submit" value="Submit your review" v-on:click="addReview">
 </aside>
 </section>

@@ -3,7 +3,7 @@ var videoApp = {
 
   addComments(data) {
     // process the comments data and push them into vue
-    data.forEach(reviews => videoApp.vm.reviews.push(reviews));
+    data.forEach(review => videoApp.vm.reviews.push(review));
   },
 
   vm : new Vue({
@@ -13,22 +13,19 @@ var videoApp = {
 
     data : {
       reviews : [],
-
       numStars : 3,
-
       review : ""
-
-
     },
 
     methods : {
+      // do post with all the new review stuff
       addReview(){
         let movieId = document.querySelector('.movId').textContent;
 
         fetch('/api', {
           method : 'post',
           headers : {
-            'Accept' : 'application/json, text-plain, /',
+            'Accept' : 'application/json, text-plain, */*',
             'Content-type' : 'application/json'
 
           },
@@ -42,7 +39,7 @@ var videoApp = {
         .then((data) =>{
           console.log(data);
         })
-        .catch(function(error){
+        .catch((error) => { // the arrow makes it into a function
           console.log(error);
         });
       }
@@ -50,4 +47,4 @@ var videoApp = {
   })
 };
 
-videoApp.addComments(appData.movies);
+videoApp.addComments(appData.movies);//this is the calling to parse the stuff
