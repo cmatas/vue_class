@@ -41,12 +41,12 @@
 }
 
 .add-comment {
-	float: right; 
+	// float: right; 
 	width: 45%; 
 	display: inline-block; 
 	padding-left: 1.5em;
 
-	label {
+	label:not(.star-rating-star) {
 		margin-left: 0.8em;
 	    font-size: 1.4em;
 	    position: relative;
@@ -75,6 +75,12 @@
 		line-height: 1.5;
 		border-radius: 8px;
 	}
+
+	.star-rating { margin: 4px 0 10px 0; }
+}
+
+.floatRight { 
+	float : right; 
 }
 
 .review-heading { font-size: 1.5em; }

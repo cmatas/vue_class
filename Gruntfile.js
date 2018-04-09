@@ -8,8 +8,8 @@ module.exports = function(grunt) {
         // },
         my_target: {
           files: {
-            'public/dist/main.min.js': ['public/script/main.js'],
-            'public/dist/videopage.min.js': ['public/script/videopage.js']
+            'public/dist/main.min.js': ['public/js/main.js'],
+            'public/dist/videopage.min.js': ['public/js/videopage.js']
           }
         }
       },
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       }
   });
 
- 
+
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify-es');

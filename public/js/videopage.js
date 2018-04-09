@@ -22,26 +22,27 @@ var videoApp = {
       addReview(){
         let movieId = document.querySelector('.movId').textContent;
 
-        fetch('/api', {
-          method : 'post',
-          headers : {
-            'Accept' : 'application/json, text-plain, */*',
-            'Content-type' : 'application/json'
-
-          },
-          body : JSON.stringify({
-           id : movieId,
-          stars : this.numStars,
-          comment : this.review
-         })
+      axios.post('/api', {
+             id : movieId,
+            stars : this.numStars,
+            comment : this.review
         })
-        .then((resp) => resp.json())
-        .then((data) =>{
-          console.log(data);
+        .then((response) => {
+          console.log(response);
         })
-        .catch((error) => { // the arrow makes it into a function
+        .catch((error) => {
           console.log(error);
         });
+
+        // push things to the review array
+        this.reviews.push({
+          comments_copy : this.review,
+          comments_rating : this.numStars,
+          comments_date : `${ new Date() }`
+        });
+
+        this.review = "";
+        this. numStars = 0;
       }
     }
   })
